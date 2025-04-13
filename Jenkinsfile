@@ -9,7 +9,7 @@ pipeline {
        stage('Clone Repository') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/Mybvc365/medicalwebsite.git'
+                    url: 'https://github.com/Mybvc365/HealthcareApplication.git'
             }
         }
  
