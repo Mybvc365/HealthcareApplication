@@ -18,8 +18,8 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                     sh '''
                         echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-                        sudo docker build -t $DOCKER_IMAGE .
-                        sudo docker push $DOCKER_IMAGE
+                        docker build -t $DOCKER_IMAGE .
+                        docker push $DOCKER_IMAGE
                     '''
                 }
             }
@@ -30,10 +30,10 @@ pipeline {
                 sshagent(credentials: ['app-server-key']) {
                     sh '''
                         ssh -o StrictHostKeyChecking=no $APP_SERVER "
-                            sudo docker pull $DOCKER_IMAGE &&
-                            sudo docker stop myapp || true &&
-                            sudo docker rm myapp || true &&
-                            sudo docker run -d --name myapp -p 80:80 $DOCKER_IMAGE
+                            docker pull $DOCKER_IMAGE &&
+                            docker stop myapp || true &&
+                            docker rm myapp || true &&
+                            docker run -d --name myapp -p 80:80 $DOCKER_IMAGE
                         "
                     '''
                 }
