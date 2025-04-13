@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE = 'mybvc365/medicio:latest'
+        DOCKER_IMAGE = 'mybvc365/healthcareapplication:latest'
         APP_SERVER = 'ec2-user@3.224.127.93'
     }
  
