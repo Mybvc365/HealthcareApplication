@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKER_IMAGE = 'mybvc365/healthcareapplication:latest'
-        APP_SERVER = 'ec2-user@3.224.127.93'
+        APP_SERVER = 'ec2-user@44.197.240.180'
     }
  
     stages {
